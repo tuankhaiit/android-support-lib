@@ -5,7 +5,7 @@ Some utilities, kotlin extensions useful for Android development
 
 ## Installation
 
-### Step 1: Add the JitPack repository to your build file
+#### Step 1: Add the JitPack repository to your build file
 
 Add it in your root build.gradle at the end of repositories:
 ```
@@ -17,7 +17,7 @@ allprojects {
 }
 ```
 
-### Step 2: Add the dependency
+#### Step 2: Add the dependency
 
 ```
 dependencies {
@@ -27,14 +27,14 @@ dependencies {
 
 ## Features
 
-### Animation
+### 1. Animation
 
 #### FadeIn
 ```Kotlin
 anyView.animFadeIn(delayMillis = 500L, fadeDuration = 2000L)
 ```
 
-### Extensions
+### 2. Extensions
 
 #### Debounce with Coroutines
 ```Kotlin

@@ -1,0 +1,3 @@
+rootProject.name = "Android Support Lib"
+include ':example'
+include ':kt_util'

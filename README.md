@@ -10,10 +10,10 @@ Some utilities, kotlin extensions useful for Android development
 Add it in your root build.gradle at the end of repositories:
 ```
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
 }
 ```
 
@@ -21,6 +21,6 @@ allprojects {
 
 ```
 dependencies {
-	        implementation 'com.github.tuankhaiit:android-support-lib:latest_version'
+	implementation 'com.github.tuankhaiit:android-support-lib:latest_version'
 }
 ```

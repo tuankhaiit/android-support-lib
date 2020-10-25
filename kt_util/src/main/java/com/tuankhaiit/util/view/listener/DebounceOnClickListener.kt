@@ -2,6 +2,7 @@ package com.tuankhaiit.util.view.listener
 
 import android.view.View
 import com.tuankhaiit.util.operation.coroutinesDebounce
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 
 /**
@@ -12,11 +13,11 @@ import kotlinx.coroutines.MainScope
 
 fun View.setDebounceOnClickListener(
     delayMillis: Long = 500L,
+    coroutineScope: CoroutineScope = MainScope(),
     action: (view: View) -> Unit
 ) {
-    val scope = MainScope()
     val clickWithDebounce: (view: View) -> Unit =
-        coroutinesDebounce(delayMillis = delayMillis, scope = scope) {
+        coroutinesDebounce(delayMillis = delayMillis, coroutineScope = coroutineScope) {
             action(it)
         }
 

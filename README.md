@@ -36,6 +36,18 @@ anyView.animFadeIn(delayMillis = 500L, fadeDuration = 2000L)
 
 ### 2. Extensions
 
+#### Spreading out work across multiple frames
+```Kotlin
+UIJobScheduler.submitJob {
+    // update view
+}
+```
+
+#### Debounce for LiveData
+```Kotlin
+liveData.debounce(1000L)
+```
+
 #### Debounce with Coroutines
 ```Kotlin
 coroutinesDebounce(delayMillis = delayMillis, scope = scope) {

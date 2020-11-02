@@ -62,4 +62,19 @@ anyView.setDebounceOnClickListener(delayMillis = 1000L) {
 }
 ```
 
+#### Hide keyboard from context
+```Kotlin
+context.hideKeyboard()
+```
+
+#### Hide keyboard when touch outside EditText
+```Kotlin
+rootView.hideKeyboardWhenTouchOutside()
+```
+
+#### Get current Activity from context
+```Kotlin
+context.getNearestActivity()
+```
+
 Updating...

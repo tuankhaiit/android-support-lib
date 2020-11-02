@@ -34,18 +34,37 @@ dependencies {
 anyView.animFadeIn(delayMillis = 500L, fadeDuration = 2000L)
 ```
 
-### 2. Extensions
+### 2. Context Extensions
+
+#### Get current Activity from context
+```Kotlin
+context.getNearestActivity()
+```
+
+#### Hide keyboard from context
+```Kotlin
+context.hideKeyboard()
+```
+
+#### Hide keyboard when touch outside EditText
+```Kotlin
+rootView.hideKeyboardWhenTouchOutside()
+```
+
+### 3. LiveData Extensions
+
+#### Debounce for LiveData
+```Kotlin
+liveData.debounce(1000L)
+```
+
+### 4. View Extensions
 
 #### Spreading out work across multiple frames
 ```Kotlin
 UIJobScheduler.submitJob {
     // update view
 }
-```
-
-#### Debounce for LiveData
-```Kotlin
-liveData.debounce(1000L)
 ```
 
 #### Debounce with Coroutines
@@ -62,19 +81,5 @@ anyView.setDebounceOnClickListener(delayMillis = 1000L) {
 }
 ```
 
-#### Hide keyboard from context
-```Kotlin
-context.hideKeyboard()
-```
-
-#### Hide keyboard when touch outside EditText
-```Kotlin
-rootView.hideKeyboardWhenTouchOutside()
-```
-
-#### Get current Activity from context
-```Kotlin
-context.getNearestActivity()
-```
 
 Updating...

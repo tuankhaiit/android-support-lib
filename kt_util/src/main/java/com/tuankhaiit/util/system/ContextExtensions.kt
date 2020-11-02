@@ -52,7 +52,7 @@ fun View.hideKeyboardWhenTouchOutside() {
 
 @SuppressLint("ClickableViewAccessibility")
 private fun setupHideKeyboardWhenTouchOutside(view: View, activity: Activity?) {
-    if (view !is EditText && view.isClickable) {
+    if (view !is EditText) {
         view.setOnTouchListener { _, _ ->
             activity?.hideKeyboard()
             return@setOnTouchListener false

@@ -67,6 +67,11 @@ UIJobScheduler.submitJob {
 }
 ```
 
+#### EditText: Request focus and show keyboard
+```Kotlin
+anyEditText.requestFocusAndShowKeyboard()
+```
+
 #### Debounce with Coroutines
 ```Kotlin
 coroutinesDebounce(delayMillis = delayMillis, scope = scope) {

@@ -46,6 +46,11 @@ context.getNearestActivity()
 context.hideKeyboard()
 ```
 
+#### Show keyboard for current focus
+```Kotlin
+context.showKeyboard()
+```
+
 #### Hide keyboard when touch outside EditText
 ```Kotlin
 rootView.hideKeyboardWhenTouchOutside()
@@ -69,7 +74,12 @@ UIJobScheduler.submitJob {
 
 #### EditText: Request focus and show keyboard
 ```Kotlin
-anyEditText.requestFocusAndShowKeyboard()
+editText.requestFocusAndShowKeyboard()
+```
+
+#### TextView: Disable copy/paste
+```Kotlin
+textView.disableCopyPaste()
 ```
 
 #### Debounce with Coroutines

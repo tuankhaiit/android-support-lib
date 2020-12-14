@@ -45,24 +45,24 @@ class KTEncryptedSharedPreferences private constructor(
     override fun getStringSet(key: String?, defValues: MutableSet<String>?): MutableSet<String>? =
         sharedPreferences.getStringSet(key, defValues)
 
-    inline fun <reified D : Any?> put(key: String, value: D?) {
+    inline fun <reified T : Any?> put(key: String, value: T?) {
         when (value) {
             is Boolean -> putBoolean(key, value)
             is Float -> putFloat(key, value)
             is Int -> putInt(key, value)
             is Long -> putLong(key, value)
             is String -> putString(key, value)
-            else -> putObject(key, value)
+            else -> putObject<T>(key, value)
         }
     }
 
     inline fun <reified T> get(key: String): T? {
-        return when (T::class.java) {
-            Boolean::javaClass -> getBoolean(key, false) as T?
-            Float::javaClass -> getFloat(key, 0.0f) as T?
-            Int::javaClass -> getInt(key, -1) as T?
-            Long::javaClass -> getLong(key, -1) as T?
-            String::javaClass -> getString(key, null) as T?
+        return when (T::class.java.name) {
+            Boolean::javaClass.name -> getBoolean(key, false) as T?
+            Float::javaClass.name -> getFloat(key, 0.0f) as T?
+            Int::javaClass.name -> getInt(key, -1) as T?
+            Long::javaClass.name -> getLong(key, -1) as T?
+            String::javaClass.name -> getString(key, null) as T?
             else -> getObject<T>(key)
         }
     }

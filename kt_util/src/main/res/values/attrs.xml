@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PinCodeEditText">
+        <attr name="pinLength" format="integer" />
+        <attr name="pinSpacing" format="dimension" />
+        <attr name="pinPadding" format="dimension" />
+        <attr name="pinTextSize" format="dimension" />
+        <attr name="pinTextColor" format="color" />
+        <attr name="pinBackgroundDrawable" format="reference" />
+    </declare-styleable>
+</resources>

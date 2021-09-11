@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.tuankhaiit.util.view.pincode.PinCodeEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:pinLength="4"
+        app:pinPadding="20dp"
+        app:pinSpacing="10dp"
+        app:pinBackgroundDrawable="@drawable/bg_pin_code"
+        app:pinTextColor="@color/colorPrimary"
+        app:pinTextSize="22sp" />
+
     <TextView
         android:id="@+id/txtText"
         android:layout_width="wrap_content"

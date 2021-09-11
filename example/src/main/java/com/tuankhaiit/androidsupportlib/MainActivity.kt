@@ -14,10 +14,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnClicked.setDebounceOnClickListener {
-            count++
-            log()
-        }
+//        btnClicked.setDebounceOnClickListener {
+//            count++
+//            log()
+//        }
 
         txtText.animFadeIn(fadeDuration = 2000L)
     }

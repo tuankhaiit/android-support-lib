@@ -96,5 +96,12 @@ anyView.setDebounceOnClickListener(delayMillis = 1000L) {
 }
 ```
 
+### 5. Security
+
+#### Encrypted SharedPreferences
+```Kotlin
+KTEncryptedSharedPreferences.get(context)
+```
+
 
 Updating...

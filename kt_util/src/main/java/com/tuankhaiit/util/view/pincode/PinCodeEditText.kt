@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.text.InputFilter
 import android.text.InputType
 import android.util.AttributeSet
-import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.KeyEvent
@@ -71,7 +70,6 @@ class PinCodeEditText @JvmOverloads constructor(
     private fun addDigits() {
         for (i in 1..pinLength) {
             val digit = AppCompatEditText(context).apply {
-                setText("1")
                 maxLines = 1
                 movementMethod = null
                 isCursorVisible = false
@@ -96,7 +94,7 @@ class PinCodeEditText @JvmOverloads constructor(
                     }
                 if (pinTextSize != -1) {
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, pinTextSize.toFloat())
-                    layoutParams.width = pinTextSize + pinPadding.toInt() * 2
+                    layoutParams.width = (pinTextSize + pinPadding * 1.6).toInt()
                 }
                 setLayoutParams(layoutParams)
                 disableCopyPaste()
@@ -115,7 +113,6 @@ class PinCodeEditText @JvmOverloads constructor(
                 }
             }
             digit.setOnKeyListener { _, keyCode, event ->
-                Log.e("khaitdt", "$keyCode")
                 if (event.action == KeyEvent.ACTION_DOWN) {
                     when (keyCode) {
                         KeyEvent.KEYCODE_DEL -> {
@@ -149,6 +146,7 @@ class PinCodeEditText @JvmOverloads constructor(
                         KeyEvent.KEYCODE_ENTER -> {
                             if (digit.length() > 0 && index == digits.size - 1) {
                                 digit.clearFocusAndHideKeyboard()
+                                onCodeChangeListener?.onPinCodeDone(getPinCode())
                             }
                         }
                     }
@@ -188,6 +186,7 @@ class PinCodeEditText @JvmOverloads constructor(
 
     interface OnCodeChangeListener {
         fun onPinCodeChange(pinCode: String)
+        fun onPinCodeDone(pinCode: String)
     }
 
 }

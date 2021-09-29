@@ -6,6 +6,7 @@
         <attr name="pinPadding" format="dimension" />
         <attr name="pinTextSize" format="dimension" />
         <attr name="pinTextColor" format="color" />
+        <attr name="pinTextErrorColor" format="color" />
         <attr name="pinBackgroundDrawable" format="reference" />
     </declare-styleable>
 </resources>

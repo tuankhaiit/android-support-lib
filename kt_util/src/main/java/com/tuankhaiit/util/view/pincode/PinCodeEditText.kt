@@ -36,7 +36,14 @@ class PinCodeEditText @JvmOverloads constructor(
     private var pinPadding = 20.0f
     private var pinTextSize = -1
     private var pinTextColor = Color.BLACK
+    private var pinTextErrorColor = Color.RED
     private var pinBackground: Int = -1
+
+    var error: Boolean = false
+        set(value) {
+            field = value
+            updateTextColor()
+        }
 
     init {
         orientation = HORIZONTAL
@@ -57,6 +64,8 @@ class PinCodeEditText @JvmOverloads constructor(
                 )
             pinTextColor =
                 typeArray.getColor(R.styleable.PinCodeEditText_pinTextColor, pinTextColor)
+            pinTextErrorColor =
+                typeArray.getColor(R.styleable.PinCodeEditText_pinTextErrorColor, pinTextErrorColor)
             pinBackground =
                 typeArray.getResourceId(R.styleable.PinCodeEditText_pinBackgroundDrawable, -1)
         } finally {
@@ -152,6 +161,16 @@ class PinCodeEditText @JvmOverloads constructor(
                     }
                 }
                 return@setOnKeyListener true
+            }
+        }
+    }
+
+    private fun updateTextColor() {
+        digits.forEach {
+            if (error) {
+                it.setTextColor(pinTextErrorColor)
+            } else {
+                it.setTextColor(pinTextColor)
             }
         }
     }

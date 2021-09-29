@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <com.tuankhaiit.util.view.pincode.PinCodeEditText
+        android:id="@+id/pinCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -16,6 +17,7 @@
         app:pinSpacing="10dp"
         app:pinBackgroundDrawable="@drawable/bg_pin_code"
         app:pinTextColor="@color/colorPrimary"
+        app:pinTextErrorColor="@color/red"
         app:pinTextSize="22sp" />
 
     <TextView

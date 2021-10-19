@@ -17,6 +17,9 @@ import androidx.core.view.children
  * https://www.tuankhaiit.com
  */
 
+/**
+ * Not work well with Dagger2/Hilt
+ */
 fun Context.getNearestActivity(): Activity? {
     var retries = 0
     var context: Context? = this

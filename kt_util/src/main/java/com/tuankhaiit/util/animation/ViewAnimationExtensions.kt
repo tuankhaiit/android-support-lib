@@ -1,9 +1,11 @@
 package com.tuankhaiit.util.animation
 
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.view.animation.AlphaAnimation
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * Created by tuankhaiit on 10/20/20.
@@ -15,14 +17,16 @@ private const val DEFAULT_FADE_IN_DURATION = 500L
 
 fun View.animFadeIn(
     delayMillis: Long = 0L,
-    fadeDuration: Long = DEFAULT_FADE_IN_DURATION
+    fadeDuration: Long = DEFAULT_FADE_IN_DURATION,
+    coroutineScope: CoroutineScope = MainScope(),
 ) {
     visibility = View.INVISIBLE
-    Handler(Looper.getMainLooper()).postDelayed({
-        this.startAnimation(AlphaAnimation(0F, 1F).apply {
+    coroutineScope.launch {
+        delay(delayMillis)
+        this@animFadeIn.startAnimation(AlphaAnimation(0F, 1F).apply {
             duration = fadeDuration
             fillAfter = true
         })
         visibility = View.VISIBLE
-    }, delayMillis)
+    }
 }

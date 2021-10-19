@@ -1,7 +1,7 @@
 package com.tuankhaiit.util.view.listener
 
 import android.view.View
-import com.tuankhaiit.util.operation.coroutinesDebounce
+import com.tuankhaiit.util.operator.coroutinesDebounce
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 

@@ -1,4 +1,4 @@
-package com.tuankhaiit.util.operation
+package com.tuankhaiit.util.operator
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData

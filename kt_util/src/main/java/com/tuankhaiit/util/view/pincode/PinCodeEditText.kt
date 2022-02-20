@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.KeyEvent
+import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatEditText
 import com.tuankhaiit.util.R
@@ -30,7 +31,7 @@ class PinCodeEditText @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttrs) {
     var onCodeChangeListener: OnCodeChangeListener? = null
 
-    private var digits = arrayListOf<AppCompatEditText>()
+    private var digits = arrayListOf<EditText>()
     private var pinLength = 6
     private var pinSpacing = 20.0f
     private var pinPadding = 20.0f
@@ -82,6 +83,8 @@ class PinCodeEditText @JvmOverloads constructor(
                 maxLines = 1
                 movementMethod = null
                 isCursorVisible = false
+                isFocusable = true
+                isFocusableInTouchMode = true
                 gravity = Gravity.CENTER
                 inputType = InputType.TYPE_CLASS_NUMBER
                 filters = arrayOf(InputFilter.LengthFilter(1))
@@ -128,7 +131,12 @@ class PinCodeEditText @JvmOverloads constructor(
                             if (index > 0) {
                                 if (digit.length() == 0) {
                                     digits[index - 1].setText("")
-                                    digits[index - 1].requestFocus()
+                                    digits[index - 1].let {
+                                        requestFocus()
+                                        it.post {
+                                            it.requestFocus()
+                                        }
+                                    }
                                 }
                             }
                             digit.setText("")
@@ -148,7 +156,35 @@ class PinCodeEditText @JvmOverloads constructor(
                                 digit.setText("${keyCode - KeyEvent.KEYCODE_0}")
                             }
                             if (index < digits.size - 1) {
-                                digits[index + 1].requestFocus()
+                                digits[index + 1].let {
+                                    requestFocus()
+                                    it.post {
+                                        it.requestFocus()
+                                    }
+                                }
+                            }
+                            onCodeChangeListener?.onPinCodeChange(getPinCode())
+                        }
+                        KeyEvent.KEYCODE_NUMPAD_0,
+                        KeyEvent.KEYCODE_NUMPAD_1,
+                        KeyEvent.KEYCODE_NUMPAD_2,
+                        KeyEvent.KEYCODE_NUMPAD_3,
+                        KeyEvent.KEYCODE_NUMPAD_4,
+                        KeyEvent.KEYCODE_NUMPAD_5,
+                        KeyEvent.KEYCODE_NUMPAD_6,
+                        KeyEvent.KEYCODE_NUMPAD_7,
+                        KeyEvent.KEYCODE_NUMPAD_8,
+                        KeyEvent.KEYCODE_NUMPAD_9 -> {
+                            if (digit.length() == 0) {
+                                digit.setText("${keyCode - KeyEvent.KEYCODE_NUMPAD_0}")
+                            }
+                            if (index < digits.size - 1) {
+                                digits[index + 1].let {
+                                    requestFocus()
+                                    it.post {
+                                        it.requestFocus()
+                                    }
+                                }
                             }
                             onCodeChangeListener?.onPinCodeChange(getPinCode())
                         }
